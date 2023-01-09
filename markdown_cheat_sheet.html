@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>markdown_cheat_sheet.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="content">Content:-</h1>
+<p><a href="#1-heading">1) Headings</a><br>
+<a href="#2-block-of-words">2) Block of Words</a><br>
+<a href="#3-line-breaks">3) Line Breaks</a><br>
+<a href="#4-combining-two-things">4) Combining Two things</a><br>
+<a href="#5-face-of-text">5) Face of text</a><br>
+<a href="#6-bulett-points--lists">6) Bulett Points / Lists</a><br>
+<a href="#7-line-breaks-or-page-break">7) Line breaks or page break</a><br>
+<a href="#8-link-and-hyperlinks">8) Link and Hyperlinks </a><br>
+<a href="#9-images--pdf-with-link">9) Images &amp; pdf with link </a><br>
+<a href="#10-codes-or-code-block">10) Codes or Code Block </a><br>
+<a href="#11-tables">11) Tables </a><br>
+<a href="#12-commenting-in-mark-down-language-use">12) Commenting in Mark Down Language use</a><br>
+<a href="#13-colors">13) Colors</a><br>
+<a href="#14-equations">14) Equations</a><br>
+<a href="#13-install-extensions">15) Install Extensions </a></p>
+<hr>
+<h1 id="1-heading"><strong>1) Heading</strong></h1>
+<h1 id="heading-1">Heading 1</h1>
+<h2 id="heading-2">Heading 2</h2>
+<h3 id="heading-3">Heading 3</h3>
+<h4 id="heading-4">Heading 4</h4>
+<h5 id="heading-5">Heading 5</h5>
+<h6 id="heading-5">Heading 5</h6>
+<h1 id="2-block-of-words"><strong>2) Block of Words</strong></h1>
+<p>Normal Text</p>
+<p>This is a block of text, This is a block of text, This is a block of text, This is a block of text, This is a block of text, This is a block of text, This is a block of text, This is a block of text,</p>
+<blockquote>
+<p>Special Text</p>
+</blockquote>
+<h1 id="3-line-breaks"><strong>3) Line Breaks</strong></h1>
+<p>This is a block of text This is a block of text This is a block of text This is a block of text <br>
+This is a block of text This is a block of text This is a block of text This is a block of text</p>
+<p>This is a block of text This is a block of text This is a block of text This is a block of text</p>
+<p>This is a block of text This is a block of text This is a block of text This is a block of text</p>
+<h1 id="4-combining-two-things"><strong>4) Combining Two things</strong></h1>
+<p>e.g. Combining block of words or Special test and heading</p>
+<blockquote>
+<h2 id="heading-2">Heading 2</h2>
+</blockquote>
+<h1 id="5-face-of-text"><strong>5) Face of text</strong></h1>
+<p><strong>BOLD</strong></p>
+<p><em>Italics</em></p>
+<p><em><strong>BLOD AND ITALICS</strong></em></p>
+<p>OR WE CAN USE THESE SYMBOLS</p>
+<p><strong>BOLD</strong></p>
+<p><em>italics</em></p>
+<h1 id="6-bulett-points--lists"><strong>6) Bulett Points / Lists</strong></h1>
+<ul>
+<li>Bullet 1
+<ul>
+<li>bullet 2
+<ul>
+<li>bullet 3</li>
+</ul>
+</li>
+<li>bullet 4</li>
+</ul>
+</li>
+<li>bullet 5</li>
+</ul>
+<blockquote>
+<p><strong>using *or+</strong></p>
+</blockquote>
+<ul>
+<li>One</li>
+</ul>
+<ul>
+<li>One</li>
+</ul>
+<blockquote>
+<p>Numbering:-</p>
+</blockquote>
+<ol>
+<li>one<br>
+2. two</li>
+<li>three</li>
+</ol>
+<h1 id="7-line-breaks-or-page-break"><strong>7) Line breaks or page break</strong></h1>
+<p>This in Page1</p>
+<hr>
+<hr>
+<hr>
+<p>this is page 2</p>
+<h1 id="8-link-and-hyperlinks"><strong>8) Link and Hyperlinks</strong></h1>
+<p>Type 1:-</p>
+<p>[Google link]https://www.google.com/</p>
+<p>Type 2 using &lt;&gt;</p>
+<p><a href="https://www.google.com/">https://www.google.com/</a></p>
+<p>Type 3:-</p>
+<p><a href="https://www.google.com/">Google</a></p>
+<p>Type 4:-</p>
+<p>Type 5:-</p>
+<p>The Google Website Link is <a href="https://www.google.com/">here</a></p>
+<h1 id="9-images--pdf-with-link"><strong>9) Images &amp; pdf with link</strong></h1>
+<p>Type 1 <strong>Pic in your Directory</strong>:-
+<img src="store-home-share_feature.jpg" alt="pic"></p>
+<p>Type 2:-</p>
+<p><a href="store-home-share_feature.jpg">pic</a></p>
+<p>Type 3 for <strong>for online pics</strong>:-</p>
+<p><img src="https://www.google.com/search?q=markdown&amp;sxsrf=ALiCzsZJqZTl78Gv-nfo0NT1gva_DLOJ6w:1669349948878&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwiWs9WVvcj7AhVIQaQEHRGuCbcQ_AUoAXoECAMQAw&amp;biw=1536&amp;bih=714&amp;dpr=1.25#imgrc=MEuB-fTe1OWQiM" alt="markddownpics"></p>
+<h1 id="10-codes-or-code-block"><strong>10) Codes or Code Block</strong></h1>
+<p><strong>Type 1:- :-</strong></p>
+<p>to print a string use `` <code>print(&quot;variable_name&quot;)</code></p>
+<p><strong>Type 2:- for a block of code</strong></p>
+<blockquote>
+<p>this code will show colors according to the language syntax <strong>python</strong></p>
+</blockquote>
+<pre class="hljs"><code><div>x = 5+6
+y = 3-2
+print(z)
+</div></code></pre>
+<p>For R:</p>
+<blockquote>
+<p>this code will show colors according to the language syntax <strong>R</strong></p>
+</blockquote>
+<pre class="hljs"><code><div>x = <span class="hljs-number">5</span>+<span class="hljs-number">6</span>
+y = <span class="hljs-number">3</span>-<span class="hljs-number">2</span>
+print(z)
+</div></code></pre>
+<p>For html:</p>
+<blockquote>
+<p>this code will show colors according to the language syntax <strong>html</strong></p>
+</blockquote>
+<pre class="hljs"><code><div>x = 5+6
+y = 3-2
+print(z)
+</div></code></pre>
+<h1 id="11-tables"><strong>11) Tables</strong></h1>
+<table>
+<thead>
+<tr>
+<th>species</th>
+<th>petal_length</th>
+<th>sepal_length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virginice</td>
+<td>18.2</td>
+<td>19.2</td>
+</tr>
+<tr>
+<td>setose</td>
+<td>15.1</td>
+<td>17.2</td>
+</tr>
+<tr>
+<td>Versicolor</td>
+<td>12.2</td>
+<td>12.2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Converting Column to middle</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">species</th>
+<th style="text-align:center">petal_length</th>
+<th style="text-align:center">sepal_length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Virginice</td>
+<td style="text-align:center">18.2</td>
+<td style="text-align:center">19.2</td>
+</tr>
+<tr>
+<td style="text-align:center">setose</td>
+<td style="text-align:center">15.1</td>
+<td style="text-align:center">17.2</td>
+</tr>
+<tr>
+<td style="text-align:center">Versicolor</td>
+<td style="text-align:center">12.2</td>
+<td style="text-align:center">12.2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Converting Column to right</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">species</th>
+<th style="text-align:right">petal_length</th>
+<th style="text-align:right">sepal_length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">Virginice</td>
+<td style="text-align:right">18.2</td>
+<td style="text-align:right">19.2</td>
+</tr>
+<tr>
+<td style="text-align:right">setose</td>
+<td style="text-align:right">15.1</td>
+<td style="text-align:right">17.2</td>
+</tr>
+<tr>
+<td style="text-align:right">Versicolor</td>
+<td style="text-align:right">12.2</td>
+<td style="text-align:right">12.2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="12-commenting-in-mark-down-language"><strong>12) Commenting in Mark Down Language</strong></h1>
+<!---comments syntax--->
+<h1 id="13-colors"><strong>13) Colors</strong></h1>
+<p>Sample Text without colour</p>
+<span style='color:red'>
+sample text with RED color 
+</span>
+<span style='color:green'>
+sample text with Green color 
+</span>
+<span style='color:#fc9803'>
+sample text with hex color 
+</span>
+<h1 id="14-equations">14) Equations</h1>
+<p>In-Line Math:-</p>
+<p>$this_{is}^{inline}$</p>
+<p>Block Math:-</p>
+<p>$$/int_0^\infty\frac{x^3}{e^x-1},dx= \frac{\pi^4}{15}$$</p>
+<p>You can watch following link for more information: <a href="https://jupyterbook.org/content/math.html">MathJax</a></p>
+<h1 id="15-install-extensions"><strong>15) Install Extensions</strong></h1>
+<p>To see the magic</p>
+<p><strong>1. Markdown All in One</strong></p>
+<p><strong>2. Markdown PDF</strong></p>
+<p><strong>3. markdownlint</strong></p>
+<p><strong>4. Markdown Shortcuts</strong></p>
+<p>After you install the Extensions typing anything e.g. &quot;sample test&quot; and then right click and use the option you need</p>
+<p>**Examples:- **</p>
+<p><strong>samle test</strong></p>
+<pre class="hljs"><code><div>samle test
+</div></code></pre>
+<p><em>samle test</em></p>
+<p><strong><em>samle test</em></strong></p>
+<p><s>samle test</s></p>
+<p><a href="https://www.google.com/">samletest</a></p>
+<p><img src="store-home-share_feature.jpg" alt="samle test"></p>
+<p><a href="store-home-share_feature.jpg">samle test</a></p>
+<p><code>samle test</code></p>
+<ul>
+<li>samle test</li>
+</ul>
+<ol>
+<li>samle test</li>
+</ol>
+<ul>
+<li><input type="checkbox" id="checkbox0"><label for="checkbox0">samle test</label></li>
+</ul>
+<blockquote>
+<p>samle test</p>
+</blockquote>
+<p>samle test</p>
+<p>samle test</p>
+
+</body>
+</html>
